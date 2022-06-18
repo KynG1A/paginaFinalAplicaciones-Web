@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+<head>
+<style type="text/css">
+	.es{
+		display: block;
+	}
+	.mostrar{
+		display: block;
+	}
+</style>
+</head>
+<body>
+<!---------------------------------------------AGREGAR USUARIOS------------------------------------------------------->
+<div  id="admin1">
+<form method="post" action="index.php">
+Nombre:<input type="Text" name="nombre"><br>
+Cedula:<input type="Text" name="cedula"><br>
+Fecha Nacimiento:<input type="date" name="fecha"><br>
+Sexo :
+<select name="sexo">
+	<option></option>
+	<option>Masculino</option>
+  	<option>Femenino</option>
+</select><br><br>	
+Tipo:
+<select name="tipo">
+	<option></option>
+	<option>Estudiante</option>
+  	<option>Docente</option>
+  	<option>Administrador</option>
+</select><br><br>
+Estado:
+<select name="estado">
+	<option></option>
+	<option>Activo</option>
+  	<option>Inactivo</option>
+</select><br>
+
+<input type="reset">
+<input type="Hidden" name="controlador" value="UsuarioControlador">
+<input type="Hidden" name="accion" value="addUsuario">
+<input type="Hidden" name="vista1" value="generalVista"><br>
+<input type="Submit" name="enviar" value="Agregar">
+</form>
+</div>
+<!-------------------------------------------------------------------------------------------------------------------->
+												<br><br><br><br>
+<!----------------------------------------------LISTAR USUARIOS------------------------------------------------------->
+
+Listar Usuarios:
+<form method="post" action="index.php">
+	<input type="radio" name="bEstado" value="Activo">
+  	<label for="html">ACTIVOS</label><br>
+  	<input type="radio" name="bEstado" value="Inactivo">
+  	<label for="css">INACTIVOS</label><br>
+
+	<input type="Hidden" name="controlador" value="UsuarioControlador">
+	<input type="Hidden" name="accion" value="getUsuarios">
+	<input type="Hidden" name="vista1" value="listUsuarioVista"><br>
+	<input type="Submit" name="enviar" value="Listar">
+</form>
+<!-------------------------------------------------------------------------------------------------------------------->
+												<br><br><br><br>
+<!------------------------------------------------HACER LOGIN--------------------------------------------------------->
+
+<form method="post" action="index.php">
+	<input type="Hidden" name="controlador" value="UsuarioControlador">
+	<input type="Hidden" name="accion" value="iniciar">
+	<input type="Hidden" name="vista1" value="generalVista"><br>
+	<input type="Submit" name="enviar" value="Iniciar como Administrador">
+</form>
+<br>
+<form method="post" action="index.php">
+	<input type="Hidden" name="controlador" value="UsuarioControlador">
+	<input type="Hidden" name="accion" value="cerrar">
+	<input type="Hidden" name="vista1" value="generalVista"><br>
+	<input type="Submit" name="enviar" value="Cerrar como Administrador">
+</form>
+<!--------------------------------------------------------------------------------------------------------------------
+												<br><br><br><br>-->
+<!------------------------------------------LISTAR ACTIVAR Y DESACTIVAR USUARIOS-------------------------------------->
+
+
+
+
+
+
+
+
+
+<!-------------------------------------------------------------------------------------------------------------------->
+												<br><br><br><br>
+<!-------------------------------------------BUSCAR Y EDUTAR USUARIO-------------------------------------------------->
+<form method="post" action="index.php">
+	Ingrese la cedula de Usuario:<br>
+	<input type="text" name="bCedula" placeholder="                 Cedula">
+	<input type="Hidden" name="controlador" value="UsuarioControlador">
+	<input type="Hidden" name="accion" value="buscarUsuario">
+	<input type="Hidden" name="vista1" value="BuscarUsuarioVista"><br>
+	<input type="Submit" name="enviar" value="Cerrar como Administrador">
+</form>
+<!-------------------------------------------------------------------------------------------------------------------->
+												<br><br><br><br>
+<!---------------------------------------------AGREGAR LIBROS--------------------------------------------------------->
+<div  id="admin2">
+	<form method="post" action="index.php">
+	Agregar libros:<br>
+	Nombre del Libro:<input type="Text" name="nombreLibro"><br>
+	ISBN:<input type="Text" name="isbn"><br>
+	Categoria:<input type="text" name="categoria"><br>
+	Numero de ejemplares:<input type="number" id="numEjemplares" name="numEjemplares" min="1" max="5" value=1>
+
+	<input type="Hidden" name="controlador" value="LibroControlador">
+	<input type="Hidden" name="accion" value="nada">
+	<input type="Hidden" name="vista1" value="AgregarLibro"><br>
+	<input type="Submit" name="enviar" value="Agregar Libros">
+	</form>
+</div>
+<!-------------------------------------------------------------------------------------------------------------------->
+												<br><br><br><br>
+<!-----------------------------------------------LISTAR LIBROS-------------------------------------------------------->
+<div>
+	<form method="post" action="index.php">
+		LISTAR LIBROS<br>
+		Listar por:<br>
+  		<input type="Hidden" name="controlador" value="LibroControlador">
+		<input type="Hidden" name="accion" value="nada">
+		<input type="Hidden" name="vista1" value="listLibroVista"><br>
+		<input type="Submit" name="enviar" value="LISTAR">
+	</form>
+</div>
+<div>
+	<form>
+		<input type="radio" name="bLibro" value="uno"><label>ISBN</label><br>
+  		<input type="text" id="bisbn" value="ISBN" ><br>
+
+  		<input type="radio" name="bLibro" value="dos"><label>CATEGORIA</label><br>
+  		<input type="text " id="bcat" value="Categoria" ><br>
+</div>
+</body>
+</html>
+<script>
+	document.getElementById("bisbn").style.display= 'none';
+	document.getElementById("bcat").style.display= 'none';
+
+	if(document.getElementById("bLibro").cheked){
+		alert("entro");
+		document.getElementById("bcat").style.display= 'block';
+	}
+</script>
+<?php
+	if(isset($_SESSION['Reg'])){
+		if($_SESSION['Reg']=='no'){
+			?>
+				<script>
+					//var intro = document.getElementById(‘intro’);
+					//intro.style.cssText = "background-color: black; color: white;";
+					//document.getElementsByClassName("hidden").hide();
+					//document.getElementById("admin").classname = "esconder";
+					//document.getElementById("adm").style.visibility = 'hidden';
+					document.getElementById("admin1").style.display= 'none';
+					document.getElementById("admin2").style.display= 'none';
+				</script>
+			<?php
+		}else{
+			?>
+			<script>
+					//document.getElementById("admin").classname = "mostrar";
+					document.getElementById("admin1").style.display= 'block';
+					document.getElementById("admin2").style.display= 'none';
+			</script>
+			<?php
+		}
+	}else{
+		?>
+		<script>
+			//document.getElementById("admin").classname = "esconder";
+			document.getElementById("admin1").style.display= 'none';
+			document.getElementById("admin2").style.display= 'none';
+		</script>
+		<?php
+	}
+?>

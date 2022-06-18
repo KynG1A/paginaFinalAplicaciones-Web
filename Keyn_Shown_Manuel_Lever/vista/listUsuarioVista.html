@@ -1,0 +1,29 @@
+<html>
+<body>
+	<form action="index.php">
+		<input type="Submit" value="VOLVER"><br><br>
+	<?PHP
+		echo "<table border=1>";
+			echo"<tr>";
+			echo "<td>","NOMBRE","</td>";
+			echo "<td>","CEDULA","</td>";
+			echo "<td>","FECHA_DE_NACIMIENTO","</td>";
+			echo "<td>","SEXO","</td>";
+			echo "<td>","TIPO","</td>";
+			echo "<td>","ESTADO","</td>";
+			echo"</tr>";
+		for($i=0;$i<count($resp);$i++){
+			echo"<tr>";
+			echo "<td>",$resp[$i][0],"</td>";
+			echo "<td>",$resp[$i][1],"</td>";
+			echo "<td>",$resp[$i][2],"</td>";
+			echo "<td>",$resp[$i][3],"</td>";
+			echo "<td>",$resp[$i][4],"</td>";
+			echo "<td>",$resp[$i][5],"</td>";
+			echo"</tr>";
+		}
+		echo"</table>";
+	?>
+	</form>
+</body>
+</html>

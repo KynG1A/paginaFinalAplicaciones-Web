@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<form method="post" action="index.php">
+		<!--Nombre del Libro:<input type="Text" name="nombre"><br>
+		ISBN:<input type="Text" name="isbn"><br>
+		Fecha Nacimiento:<input type="date" name="fecha"><br>-->
+		<?php
+			$x=1;
+			//${"pieza".$x}=$_POST['nombreLibro'];
+			$nombre=$_POST['nombreLibro'];
+			$isbn=$_POST['isbn'];
+			$categoria=$_POST['categoria'];
+			$ejemplares=$_POST['numEjemplares'];
+			echo "<input type='Hidden' name='ejemplares' value='".$ejemplares."'>";
+			echo "<input type='Hidden' name='nombre' value='".$nombre."'>";
+			echo "<input type='Hidden' name='isbn' value='".$isbn."'>";
+			echo "<input type='Hidden' name='categoria' value='".$categoria."'>";
+			for ($i=1; $i <= $ejemplares; $i++){
+				//<!--echo'<center>';-->
+					//${"nombre".$x}=$_POST['nombreLibro'];
+				echo '<label for="">EJEMPLAR: #'.$i.'</label><br>';
+					echo "<table border=1>";
+						echo"<tr>";
+							echo"<td>";
+								echo '<label for="">EJEMPLAR: #'.$i.'</label><br>';
+							echo"</td>";
+						echo"</tr>";
+						echo"<tr>";
+							echo "<td>","NOMBRE","</td>";
+							echo "<td>","ISBN","</td>";
+							echo "<td>","CATEGORIA","</td>";
+							echo "<td>","CODIGO DEL EJEMPLAR: $i","</td>";
+							echo "<td>","ESTADO","</td>";
+						echo"</tr>";
+
+						echo"<tr>";
+							//echo "<td>","${"nombre".$x}","</td>";
+							echo "<td>","$nombre","</td>";
+							echo "<td>","$isbn","</td>";
+							echo "<td>","$categoria","</td>";
+							echo "<td><input type='text' required name='codigo[]' placeholder='CODIGO'></td>";
+							echo "<td>
+									<select required name='estado[]'>
+										<option></option>
+										<option>Disponible</option>
+										<option>Prestado</option>
+									</select><br>
+								</td>";
+						echo"</tr>";
+					echo"</table>";
+                    echo '<br><br>';
+                    //echo ${"nombre".$x};
+                    //$x++;
+                    echo'<br>';
+
+			}
+			
+            echo "<input type='Reset' value='Limpiar Todo'>";
+            echo "<input type='Hidden' name='controlador' value='LibroControlador'>";
+			echo "<input type='Hidden' name='accion' value='addLibro'>";
+			echo "<input type='Hidden' name='vista1' value='generalVista'><br>";
+			echo "<input type='Submit' name='enviar' value='Agregar'>";
+		?>
+	</form>
+</body>
+</html>

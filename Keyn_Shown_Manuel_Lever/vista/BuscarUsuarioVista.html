@@ -1,0 +1,80 @@
+<html>
+<body>
+	<form action="index.php">
+		<input type="Submit" value="CANCELAR"><br>
+	</form>
+	<form method="post" action="index.php">
+		<input type="Submit" name="enviar" value="ACTUALIZAR">
+		<input type="Hidden" name="controlador" value="UsuarioControlador">
+		<input type="Hidden" name="accion" value="actualisarUsuario">
+		<input type="Hidden" name="vista1" value="generalVista"><br><br><br>
+	<?PHP
+		echo "<table border=1>";
+			echo"<tr><td>Datos Originales</td></tr>";
+			echo"<tr>";
+			echo "<td>","NOMBRE","</td>";
+			echo "<td>","CEDULA","</td>";
+			echo "<td>","FECHA_DE_NACIMIENTO","</td>";
+			echo "<td>","SEXO","</td>";
+			echo "<td>","TIPO","</td>";
+			echo "<td>","ESTADO","</td>";
+			echo"</tr>";
+		for($i=0;$i<count($resp);$i++){
+			echo"<tr>";
+			echo "<td>",$resp[$i][0],"</td>";
+			echo "<td>",$resp[$i][1],"</td>";
+			echo "<td>",$resp[$i][2],"</td>";
+			echo "<td>",$resp[$i][3],"</td>";
+			echo "<td>",$resp[$i][4],"</td>";
+			echo "<td>",$resp[$i][5],"</td>";
+			echo"</tr>";
+		}
+		echo"</table>";
+//-------------------------------------------------------------------------------------------------------------------->
+		echo "<br><br><br><br>";
+		echo "<table border=1>";
+			echo"<tr><td>Ingrese Los Nuevos Datos</td></tr>";
+			echo"<tr>";
+			echo "<td>","NOMBRE","</td>";
+			echo "<td>","CEDULA","</td>";
+			echo "<td>","FECHA_DE_NACIMIENTO","</td>";
+			echo "<td>","SEXO","</td>";
+			echo "<td>","TIPO","</td>";
+			echo "<td>","ESTADO","</td>";
+			echo"</tr>";
+		for($i=0;$i<count($resp);$i++){
+			echo"<tr>";
+			?><td><input type="text" name="nombre" value=<?php echo$resp[$i][0] ?>></td><?php
+			?><td><input type="text" name="cedula" readonly="readonly"value=<?php echo$resp[$i][1] ?>></td><?php
+			?><td><input type="date" name="fecha" value=<?php echo$resp[$i][2] ?>></td><?php
+			?><td>
+				<!--<input type="text" value=<?php echo$resp[$i][3] ?>>-->
+				<select name="sexo">
+					<option></option>
+					<option>Masculino</option>
+					<option>Femenino</option>
+				</select><br>
+			</td><?php
+			?><td>
+				<!--<input type="text" value=<?php echo$resp[$i][4] ?>>-->
+				<select name="tipo">
+					<option></option>
+					<option>Docente</option>
+					<option>Estudiante</option>
+				</select><br>
+			</td><?php
+			?><td>
+				<select name="estado">
+					<option></option>
+					<option>Activo</option>
+					<option>Inactivo</option>
+				</select><br>
+			<!--<input type="text" value=<?php echo$resp[$i][5] ?>>--></td><?php
+			
+			echo"</tr>";
+		}
+		echo"</table>";
+	?>
+	</form>
+</body>
+</html>
